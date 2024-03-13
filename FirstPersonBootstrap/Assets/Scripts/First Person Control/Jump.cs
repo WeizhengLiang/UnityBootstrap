@@ -20,6 +20,7 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetKeyDown(jumpKey) && isGrounded)
         {
+            Debug.Log("pressed jump");
             rb.AddForce(rb.transform.up * jumpStrength, ForceMode.Impulse);
         }
     }
