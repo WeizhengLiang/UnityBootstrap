@@ -10,6 +10,7 @@ public class Jump : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded = true;
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     void Start()
     {
@@ -20,8 +21,8 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetKeyDown(jumpKey) && isGrounded)
         {
-            Debug.Log("pressed jump");
             rb.AddForce(rb.transform.up * jumpStrength, ForceMode.Impulse);
+            jumpSoundEffect.Play();
         }
     }
 

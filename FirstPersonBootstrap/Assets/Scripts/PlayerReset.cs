@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerReset : MonoBehaviour
 {
     public Transform spawnPoint;
+    [SerializeField] private AudioSource resetSoundEffect;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            resetSoundEffect.Play();
             ResetPlayer(other.gameObject);
         }
         else

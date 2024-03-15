@@ -10,6 +10,9 @@ public class TimerScript : MonoBehaviour
 
     public PlatformTriggerScript startPlatform;
     public PlatformTriggerScript endPlatform;
+    
+    [SerializeField] private AudioSource endSoundEffect;
+    [SerializeField] private GameObject menu;
 
     public TextMeshProUGUI timerText;
 
@@ -33,7 +36,11 @@ public class TimerScript : MonoBehaviour
         }
         if (isTimerRunning && endPlatform.PlayerInsideZone())
         {
+            endSoundEffect.Play();
             StopTimer();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            menu.SetActive(true);
         }
         if (!isTimerSet && startPlatform.PlayerInsideZone())
         {
